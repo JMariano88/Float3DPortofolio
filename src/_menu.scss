@@ -1,0 +1,162 @@
+
+       
+.hidden{
+  z-index: 1000;
+  
+    position: absolute;
+    top: 60px;
+    right: 50px;
+    
+  }
+
+   .logo {
+    display: flex;
+    top: 60px;
+    z-index: 1000;
+    position: absolute;
+    left: 50px;
+    @media (max-width: 795px){
+      
+      bottom: 50px;
+      align-items: flex-end;
+      
+      
+    }
+    
+  }
+  
+  .logo a {
+    color: #fff;
+    letter-spacing: 5px;
+    font-weight: bold;
+    font-size: 2em;
+    text-decoration: none;
+    @media (max-width: 795px){
+      font-size: 1.5em;
+    }
+  }
+.hidden ul{
+    
+    display: flex;
+    justify-content:flex-end;
+    list-style: none;
+    top: 10px;
+    align-items: center;
+}
+
+.hidden ul li a {
+  
+    margin-left: 30px;
+    font-size: 1.2em;
+    color:white;
+    padding: 8px 10px;
+    text-transform: uppercase;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .hidden ul li a:before,
+  .hidden ul li a:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color:white;
+  transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hidden ul li a:hover:before,
+.hidden ul li a:hover:after {
+  width: 50%;
+}
+
+
+
+    
+    //Hamaburguer
+
+    
+
+    @media (max-width: 795px) {
+        
+       
+    .menu-btn {
+        
+        position: absolute;
+        z-index: 10000;
+        top: 35px;
+        right: 35px;
+        cursor: pointer;
+        @include easeOut;
+        .btn-line {
+        width: 28px;
+        height: 3px;
+        margin: 0 0 5px 0;
+        background: #fff;
+        @include easeOut;
+        }
+
+        // Rotate into X with Menu lines
+        &.close {
+        transform: rotate(180deg);
+
+        .btn-line {
+            // Line 1 - Rotate
+            &:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+            }
+            // Line 2 - Hide
+            &:nth-child(2) {
+            opacity: 0;
+            }
+            // Line 3 - Rotate
+            &:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+            }
+        }
+        }
+    }
+   
+    
+
+    
+
+
+
+    // Menu Overlay
+    .hidden ul {
+        position: fixed;
+        visibility: hidden;
+        opacity: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.4s ease-out;
+        background: rgba(24, 39, 51 , 0.85);
+        
+
+        
+    }
+    .hidden ul.active {
+        opacity: 1;
+        visibility: visible;
+        }
+        .hidden ul li a {
+            margin-left: 0;
+            margin-bottom: 5px;
+          }
+
+        // Links Side
+       
+
+        
+            
+        
+        }
+    
+

@@ -1,0 +1,58 @@
+@import 'config';
+@import 'menu';
+@import 'main';
+@import 'contact';
+@import 'grid';
+@import 'portfolio';
+@import 'arrow';
+@import 'loading';
+@import 'intro';
+
+html,
+body,
+#root,
+canvas {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  
+}
+
+.loading {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: #171717;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.loading-bar-container {
+  width: 200px;
+  height: 3px;
+  background: #272727;
+}
+
+.loading-bar {
+  height: 3px;
+  background: white;
+}
+
+
+
+
+
+
+
+ 

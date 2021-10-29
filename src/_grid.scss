@@ -1,0 +1,151 @@
+$gridcolumns: 12;
+$gridgutter: 30px;
+$gridwidth: 100%;
+
+// Small tablets and large smartphones (landscape view)
+$mobile: 576px;
+$mobilegrid: 4;
+
+
+// Small tablets (portrait view)
+$tabletportrait: 768px;
+$tab:6;
+
+
+// Tablets and small desktops
+$tabnormal: 992px;
+
+// Large desktops
+$bigscreen: 1200px;
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.gridrowfull{
+    width: 100%;
+}
+.gridrow{
+    width: $gridwidth;
+    margin: 0 auto;
+
+    @media (min-width: $bigscreen){
+        width:$bigscreen;
+    }
+    
+
+}
+
+
+// mobile 
+
+
+    .gridrowfull, .gridrow{
+        @extend .clearfix;
+        @for $i from 1 through $mobilegrid {
+            .sm#{$i} {
+                box-sizing: border-box;
+                width: percentage($i/$mobilegrid);
+                float: left;
+                padding-left: $gridgutter / 2;
+                padding-right: $gridgutter / 2;
+            }
+            .offset#{$i} {
+                margin-left: percentage($i/$mobilegrid);
+            }
+        } 
+        &.nogutter{
+            @for $i from 1 through $mobilegrid {
+                .sm#{$i} {
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    // Small tablets (portrait view)
+   
+    @media (min-width: $tabletportrait){
+
+        .gridrowfull, .gridrow{
+            @for $i from 1 through $tab {
+                .tb#{$i} {
+                    box-sizing: border-box;
+                    width: percentage($i/$tab);
+                    float: left;
+                    padding-left: $gridgutter / 2;
+                    padding-right: $gridgutter / 2;
+                }
+                .offset#{$i} {
+                    margin-left: percentage($i/$tab);
+                }
+            }
+            &.nogutter{
+                @for $i from 1 through $tab {
+                    .tb#{$i} {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+        
+        }
+
+        // Small tablets (portrait view)
+   
+    @media (min-width: $tabnormal){
+
+        .gridrowfull, .gridrow{
+            @for $i from 1 through $tab {
+                .tab#{$i} {
+                    box-sizing: border-box;
+                    width: percentage($i/$tab);
+                    float: left;
+                    padding-left: $gridgutter / 2;
+                    padding-right: $gridgutter / 2;
+                }
+                .offset#{$i} {
+                    margin-left: percentage($i/$tab);
+                }
+            }
+            &.nogutter{
+                @for $i from 1 through $tab {
+                    .tab#{$i} {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+        
+        }
+
+
+
+// Large tablets and desktops
+@media (min-width: $bigscreen){
+
+.gridrowfull, .gridrow{
+    @for $i from 1 through $gridcolumns {
+        .col#{$i} {
+            box-sizing: border-box;
+            width: percentage($i/$gridcolumns);
+            float: left;
+            padding-left: $gridgutter / 2;
+            padding-right: $gridgutter / 2;
+        }
+        .offset#{$i} {
+            margin-left: percentage($i/$gridcolumns);
+        }
+    }
+    &.nogutter{
+        @for $i from 1 through $gridcolumns {
+            .col#{$i} {
+                padding: 0;
+            }
+        }
+    }
+}
+
+}
