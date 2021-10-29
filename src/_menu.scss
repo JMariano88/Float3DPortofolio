@@ -16,7 +16,7 @@
     position: absolute;
     left: 50px;
     @media (max-width: 795px){
-      
+      top:inherit;
       bottom: 50px;
       align-items: flex-end;
       

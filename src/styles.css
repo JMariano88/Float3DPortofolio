@@ -24,6 +24,7 @@
 
 @media (max-width: 795px) {
   .logo {
+    top: inherit;
     bottom: 50px;
     -webkit-box-align: end;
         -ms-flex-align: end;
