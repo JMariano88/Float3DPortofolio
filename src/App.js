@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 import HomeScreen from './screens/HomeScreen';
 import MedievalScreen from './screens/MedievalScreen';
 import './styles.css'
+import { send } from 'emailjs-com';
 import CustomSwitch from './CustomSwitch';
 import {Loader} from '@react-three/drei'
 
@@ -14,6 +15,35 @@ function App() {
   const [showAbout, setShowAbout] = useState(false);
   const [showContact, setShowContact] = useState(false);
   const [showPortfolio, setShowPortfolio] = useState(false);
+  const [toSend, setToSend] = useState({
+    from_name: '',
+    message: '',
+    reply_to: '',
+  });
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    send(
+      'service_c0gbikn',
+      'template_ohimimv',
+      toSend,
+      'user_k7Z78D6abMMBZlgpunHfN'
+    )
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        alert("Message send - Thank you! I will get in touch")
+      })
+      .catch((err) => {
+        console.log('FAILED...', err);
+      });
+  };
+
+  const handleChange = (e) => {
+    setToSend({ ...toSend, [e.target.name]: e.target.value });
+  };
+
+
+
 
   const toggleClass = () => {
     if(showAbout===true || showContact===true || showMenu===true || showPortfolio===true ){
@@ -110,7 +140,7 @@ function App() {
       <section className={showContact ? "active" : ""}> 
       <button class="arrow" onClick={() =>toggleClass()}></button>
           <div className="contact">
-          
+
               <div className="row">
                   <h1>contact me</h1>
               </div>
@@ -118,15 +148,27 @@ function App() {
                   <h4 style={{textAlign:"left"}}>We'd love to hear from you!</h4>
               </div>
               <div className="row input-container">
-                  
+              <form onSubmit={onSubmit}>
                     <div className="styled-input wide">
-                      <input type="text" required />
+                      <input 
+                      type="text" required
+                      name='from_name'
+                      placeholder='Your name'
+                      value={toSend.from_name}
+                      onChange={handleChange}
+                      />
                       <label>Name</label> 
                    
                   </div>
                   
                     <div className="styled-input">
-                      <input type="text" required />
+                      <input 
+                      type="text" required
+                      name='reply_to'
+                      placeholder='Your email'
+                      value={toSend.reply_to}
+                      onChange={handleChange}
+                       />
                       <label>Email</label> 
                     
                   </div>
@@ -138,10 +180,17 @@ function App() {
                   
                   
                     <div className="styled-input wide">
-                      <textarea required></textarea>
+                      <textarea 
+                      type='text' required
+                      name='message'
+                      placeholder='Your message'
+                      value={toSend.message}
+                      onChange={handleChange}
+                      ></textarea>
                       <label>Message</label>
                     </div>
-                    <div className="btn-lrg submit-btn">Send Message</div>
+                    <button className="btn-lrg submit-btn" type='submit'>Send Message</button>
+                  </form>
               </div>
           </div>
       </section>
@@ -167,7 +216,6 @@ function App() {
                 </div>
                 </Link>
               </div>
-              
             </div>
             </div>
             </section>
